@@ -472,6 +472,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function createShareLinksHtml(name, details) {
+    const activityPageUrl = `${window.location.origin}${window.location.pathname}`;
+    const shareText = `Check out ${name} at Mergington High School! ${details.description} Schedule: ${formatSchedule(
+      details
+    )}`;
+
+    const encodedUrl = encodeURIComponent(activityPageUrl);
+    const encodedText = encodeURIComponent(shareText);
+    const encodedMailBody = encodeURIComponent(
+      `${shareText}\n\nSee activities here: ${activityPageUrl}`
+    );
+
+    return `
+      <div class="share-actions" aria-label="Share this activity">
+        <span class="share-label">Share:</span>
+        <a class="share-button" href="https://wa.me/?text=${encodedText}%20${encodedUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">WhatsApp</a>
+        <a class="share-button" href="https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+        <a class="share-button" href="mailto:?subject=${encodeURIComponent(
+          `Activity recommendation: ${name}`
+        )}&body=${encodedMailBody}" aria-label="Share by email">Email</a>
+      </div>
+    `;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -527,6 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <strong>Schedule:</strong> ${formattedSchedule}
         <span class="tooltip-text">Regular meetings at this time throughout the semester</span>
       </p>
+      ${createShareLinksHtml(name, details)}
       ${capacityIndicator}
       <div class="participants-list">
         <h5>Current Participants:</h5>
