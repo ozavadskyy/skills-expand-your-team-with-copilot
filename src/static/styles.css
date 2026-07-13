@@ -50,6 +50,20 @@ body {
   font-size: 0.9rem;
 }
 
+body.dark-mode {
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #f3f3f3;
+  --text-secondary: #c7c7c7;
+  --border: #3b3b3b;
+  --border-light: #2a2a2a;
+  --border-focus: #4a4a4a;
+  --info-light: #1c2b30;
+  --success-light: #1c2f22;
+  --warning-light: #3b2f13;
+  --error-light: #3a1f1f;
+}
+
 header {
   text-align: center;
   padding: 12px 0;
@@ -662,11 +676,16 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 #user-status {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 #user-info {
@@ -693,6 +712,16 @@ footer {
 
 .icon-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .icon-button,
+body.dark-mode #logout-button {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .icon-button:hover,
+body.dark-mode #logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .user-icon {
