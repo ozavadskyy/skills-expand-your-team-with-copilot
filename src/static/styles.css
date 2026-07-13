@@ -191,6 +191,37 @@ section h3 {
   background-color: var(--primary-light);
   color: white;
   font-size: 0.75rem;
+.share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.share-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  color: var(--primary);
+  background-color: var(--surface);
+  transition: all 0.2s ease;
+}
+
+.share-button:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-text);
+  border-color: var(--primary-light);
 }
 
 .activity-card-actions {
